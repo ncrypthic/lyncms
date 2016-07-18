@@ -1,0 +1,6 @@
+app:
+    resource: '@AppBundle/Resources/config/routing.xml'
+    prefix: /
+
+_cmf_create:
+    resource: '@CmfCreateBundle/Resources/config/routing/rest_no_locale.xml'

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <import resource="\AppBundle\Controller\ArticleController" type="rest" prefix="/api" />
+    <import resource="\AppBundle\Controller\PageController" type="rest" prefix="/api" />
+    <route id="app_dashboard" path="/backend">
+        <default key="_controller">AppBundle:Dashboard:index</default>
+    </route>
+    <route id="app_homepage" path="/">
+        <default key="_controller">AppBundle:Homepage:index</default>
+    </route>
+    <route id="app_page_editor" path="/backend/page_editor">
+        <default key="_controller">AppBundle:Dashboard:pageEditor</default>
+    </route>
+    <route id="app_authenticate" path="/authenticate"/>
+    <route id="app_logout" path="/logout"/>
+</routes>

@@ -1,0 +1,58 @@
+{% extends '::backend.html.twig' %}
+
+{% block side_panel %}
+    <div class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="#/dashboard"><i class="glyphicon glyphicon-home"></i> Dashboard</a>
+            </li>
+            <li uib-dropdown>
+                <a ng-click="isPagesCollapsed = !isPagesCollapsed">
+                    <i class="glyphicon glyphicon-book"></i> Pages 
+                    <button class="btn btn-sm btn-primary pull-right" ng-click="createPage($event)">
+                        <i class="glyphicon glyphicon-plus pull-right"></i>
+                    </button>
+                </a>
+                <ul class="nav" uib-collapse="isPagesCollapsed">
+                    <li ng-repeat="page in pages">
+                        <a href="#/pages/{[{ page.title }]}">
+                            {[{ page.title }]}
+                            <button class="btn btn-sm btn-danger pull-right" ng-click="removePage($event, $index)">
+                                <i class="glyphicon glyphicon-minus pull-right"></i>
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#/categories/"><i class="glyphicon glyphicon-tags"></i> Categories</a>
+            </li>
+            <li>
+                <a href="#/articles/"><i class="glyphicon glyphicon-file"></i> Articles</a>
+            </li>
+            <li>
+                <a href="#/gallery"><i class="glyphicon glyphicon-picture"></i> Gallery</a>
+            </li>
+            <li uib-dropdown>
+                <a ng-click="isExtensionsCollapsed = !isExtensionsCollapsed">
+                    <i class="glyphicon glyphicon-menu-hamburger"></i> Extensions
+                </a>
+                <ul class="nav" uib-collapse="isPagesCollapsed">
+                {% for extension in extensions %}
+                    <li>
+                        <a href="#/extensions/{{ extension.name }}">{{ extension.name }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+            <li>
+                <a href="#/settings"><i class="glyphicon glyphicon-cog"></i> Settings</a>
+            </li>
+        </ul>
+    </div>
+{% endblock side_panel %}
+
+{% block main_panel %}
+    <ui-view></ui-view>
+{% endblock main_panel %}
+{# empty Twig template #}

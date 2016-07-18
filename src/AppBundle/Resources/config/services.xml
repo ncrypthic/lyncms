@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="app_bundle.phpcr.initalizer"
+                 class="Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer" >
+            <argument>CMS Intializer</argument>
+            <argument type="collection">
+                <argument>/cms/pages</argument>
+                <argument>/cms/articles</argument>
+            </argument>
+            <tag name="doctrine_phpcr.initializer"/>
+        </service>
+        <service id="app_bundle.extension_manager"
+                 class="AppBundle\Extension\Manager">
+        </service>
+        <service id="app_bundle.navigation"
+                 class="AppBundle\Menu\NavigationMenuProvider">
+            <argument type="service" id="doctrine_phpcr.odm.document_manager"/>
+            <argument type="service" id="knp_menu.factory"/>
+            <argument type="service" id="cmf_routing_auto.slugifier" />
+            <tag name="knp_menu.provider"/>
+        </service>
+    </services>
+</container>

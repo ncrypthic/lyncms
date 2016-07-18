@@ -1,0 +1,6 @@
+{% extends '::base.html.twig' %}
+
+{% block container %}
+    {{ knp_menu_render('navigation') }}
+    {% block page %}{% endblock page %}
+{% endblock container %}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<auto-mapping xmlns="http://cmf.symfony.com/schema/routing_auto">
+    <mapping class="AppBundle\Document\Page" uri-schema="/{title}">
+        <token-provider token="title" name="content_method">
+            <option name="method">getTitle</option>
+        </token-provider>
+    </mapping>
+    <mapping class="AppBundle\Document\Article" uri-schema="/articles/{date}/{title}">
+        <token-provider token="date" name="content_datetime">
+            <option name="method">getDate</option>
+        </token-provider>
+        <token-provider token="title" name="content_method">
+            <option name="method">getTitle</option>
+        </token-provider>
+    </mapping>
+</auto-mapping>

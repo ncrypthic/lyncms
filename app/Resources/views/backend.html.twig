@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% include "CmfCreateBundle::includecssfiles.html.twig" %}
+    <link href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('vendor/angular-bootstrap/ui-bootstrap-csp.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('css/app.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock stylesheets %}
+
+{% block header_scripts %}
+    <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/tinymce-dist/tinymce.min.js') }}"></script>
+    <script src="{{ asset('vendor/angular/angular.min.js') }}"></script>
+    <script src="{{ asset('vendor/angular-ui-tinymce/dist/tinymce.min.js') }}"></script>
+    <script src="{{ asset('vendor/angular-ui-router/release/angular-ui-router.min.js') }}"></script>
+    <script src="{{ asset('vendor/angular-sanitize/angular-sanitize.min.js') }}"></script>
+    <script src="{{ asset('vendor/angular-bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
+{% endblock header_scripts %}
+
+{% block container %}
+    <div class="wrapper" ng-controller="FrontController">
+        <div class="side panel">
+            {% block side_panel %}{% endblock side_panel %}
+        </div>
+        <div class="container main panel">
+            {% block main_panel %}{% endblock main_panel %}
+        </div>
+    </div>
+{% endblock container %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/app.js') }}" data-baseurl="{{ app.request.baseUrl }}"></script>
+    <script src="{{ asset('js/controllers/ArticleController.js') }}"></script>
+    <script src="{{ asset('js/controllers/PageController.js') }}"></script>
+    <script src="{{ asset('js/controllers/CategoryController.js') }}"></script>
+    <script src="{{ asset('js/controllers/DashboardController.js') }}"></script>
+{% endblock javascripts %}
