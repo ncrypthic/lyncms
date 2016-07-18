@@ -1,0 +1,24 @@
+<h3>Article Form</h3>
+<uib-tabset active="active">
+    <uib-tab index="0" heading="Editor">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" ng-model="article.title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" ng-model="article.category" class="form-control" />
+            </div>
+            <div class="form-group">
+                <textarea ng-model="article.content" ui-tinymce="editor.options"></textarea>
+            </div>
+    </uib-tab>
+    <uib-tab index="1" heading="Preview">
+        <h1>{{article.title}}</h1>
+        <div ng-bind-html="article.content"></div>
+    </uib-tab>
+</uib-tabset>
+<div>
+    <button class="btn btn-success" ng-click="saveArticle()">Save</button>
+    <a href="#/articles/" class="btn btn-default">Cancel</a>
+</div>

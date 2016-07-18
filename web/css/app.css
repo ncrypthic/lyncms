@@ -1,0 +1,48 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 30, 2016, 5:14:02 PM
+    Author     : Lim Afriyadi <lim.afriyadi@rajawalisoftware.com>
+*/
+.wrapper {
+  position: relative;
+  z-index: 3; }
+  .wrapper .side {
+    display: block;
+    position: fixed;
+    background: #e7e7e7;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100%;
+    overflow: auto; }
+    .wrapper .side .navbar {
+      width: 240px; }
+      .wrapper .side .navbar li {
+        width: 100%; }
+  .wrapper .main {
+    display: block;
+    left: 240px;
+    position: absolute; }
+
+.create-ui-toolbar-wrapper {
+  background-color: transparent !important; }
+
+.midgardNotifications-item-outer {
+  top: 50px !important;
+  right: 10px;
+  z-index: 999; }
+
+.modal-open .modal {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  border: none;
+  margin-top: 30px;
+  width: auto;
+  box-shadow: none; }
+
+/*# sourceMappingURL=app.css.map */

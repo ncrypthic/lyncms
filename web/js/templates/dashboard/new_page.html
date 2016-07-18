@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add New Page</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" ng-model="page.title" class="form-control"/>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="savePage($close)">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="$dismiss('canceled')">Cancel</button>
+</div>
