@@ -21,14 +21,28 @@ var App = (function(ng) {
         path: null,
         config: {}
     }
+    function Directive(name, config) {
+        this.name   = name;
+        this.init   = [function() {
+            return config;
+        }];
+    };
+    
+    Directive.prototype = {
+        name: "",
+        init: [function() {
+        }]
+    };
     
     function App() {};
     App.prototype = {
         Definition: Definition,
         State: State,
+        Directive: Directive,
         controllers: [],
         services: [],
         states: [],
+        directives: [],
         baseUrl: $("[data-baseurl]").attr('data-baseurl')
     };
     var $app = new App();
@@ -97,6 +111,9 @@ var App = (function(ng) {
         });
         $app.services.forEach(function(def) {
             module.services(def.name, def.init);
+        });
+        $app.directives.forEach(function(def){
+            module.directive(def.name, def.init);
         });
         angular.bootstrap(document, ['app.cms']);
     });
