@@ -1,6 +1,5 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout/default.html.twig' %}
 
-{% block container %}
-    {{ knp_menu_render('navigation') }}
-    {% block page %}{% endblock page %}
-{% endblock container %}
+{% block stylesheets %}
+    <link href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock stylesheets %}
