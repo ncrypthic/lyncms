@@ -8,6 +8,8 @@
 
 namespace AppBundle\Extension;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 /**
  * CMS extension manager
  *
@@ -15,16 +17,28 @@ namespace AppBundle\Extension;
  */
 class Manager
 {
+    /**
+     * @var array
+     */
     private $extensions;
+    /**
+     * @var \Twig_Environment
+     */
+    private $twig;
     
     public function __construct()
     {
         $this->extensions = array();
     }
     
+    public function setTwig(\Twig_Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+    
     public function registerExtension(ExtensionInterface $extension)
     {
-        $extName = $extension->getName();
+        $extName = $extension->getCode();
         if(isset($this->extensions[$extName])) {
             $msg = sprintf("Cannot register '%s' extension because it was already registered", $extName);
             throw new \InvalidArgumentException($msg);
@@ -39,10 +53,27 @@ class Manager
         return $this->extensions;
     }
     
-    public function parse($text)
+    public function compile($text)
     {
-        return preg_replace_callback(":[a-zA-Z0-9_-\.]+:", function(){
+        $codes           = array_keys($this->extensions);
+        $patterns        = array();
+        $resolver        = new OptionsResolver();
+        array_walk($codes, function($code) use(&$patterns, $resolver) { 
+            $extension = $this->extensions[$code];
             
-        }, $text);
+            $patterns["/:(".$code.")(?:(.*)):/"] = function($match) use($extension, $resolver) {
+                $str      = html_entity_decode($match[2]);
+                $stripped = str_replace(" ", "", $str);
+                $trimmed  = trim($str, "()");
+                $arg      = str_getcsv($trimmed);
+                $extension->getDefaultOptions($resolver);
+                $content  = $extension->getContent($resolver->resolve($arg));
+                
+                return $this->twig->render($extension->getTemplate(), 
+                        array('data' => $content));
+            };
+        });
+        
+        return preg_replace_callback_array($patterns, $text);
     }
 }
