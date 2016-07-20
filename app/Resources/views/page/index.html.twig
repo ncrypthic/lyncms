@@ -9,7 +9,7 @@ http://symfony.com/doc/current/cmf/bundles/routing/dynamic.html#configuring-the-
 
 {% block title %}{{ page.title }}{% endblock %}
 
-{% block page %}
+{% block main %}
     <h1>{{ page.title|raw }}</h1>
     <div>{{ page.content|raw }}</div>
-{% endblock %}
+{% endblock main %}
