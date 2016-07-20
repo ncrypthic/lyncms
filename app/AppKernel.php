@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
             new Symfony\Cmf\Bundle\RoutingAutoBundle\CmfRoutingAutoBundle(),
             new Symfony\Cmf\Bundle\SimpleCmsBundle\CmfSimpleCmsBundle(),
+            new Symfony\Cmf\Bundle\MediaBundle\CmfMediaBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
 
             new Symfony\Cmf\Bundle\BlockBundle\CmfBlockBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
