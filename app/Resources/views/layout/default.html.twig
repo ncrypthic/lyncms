@@ -9,22 +9,17 @@
 
 {% block container %}
 <div class="container">
-    <div class="col-md-12"></div>
     <div class="col-md-12">
+        {% block header %}
         <nav>
             <div class="navbar navbar-default">
                 {{ knp_menu_render('navigation', { 'rootClass': 'nav navbar-nav' } ) }}
             </div>
         </nav>
+        {% endblock header %}
     </div>
     <div class="col-md-9">{% block main %}{% endblock main %}</div>
     <div class="col-md-3">{% block sidebar %}:articles(1, "test"):{% endblock sidebar %}</div>
     <div class="col-md-12">{% block footer %}{% endblock footer %}</div>
 </div>
 {% endblock container %}
-
-{% block root %}
-    {% set listAttributes = item.childrenAttributes|merge({ 'class': [
-    options.rootClass is defined ? options.rootClass : '' ] }) %}
-    {{ block('list') -}}
-{% endblock %}
