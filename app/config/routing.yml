@@ -4,3 +4,15 @@ app:
 
 _cmf_create:
     resource: '@CmfCreateBundle/Resources/config/routing/rest_no_locale.xml'
+
+_cmf_media_file:
+    resource: "@CmfMediaBundle/Resources/config/routing/file.xml"
+
+_cmf_media_image:
+    resource: "@CmfMediaBundle/Resources/config/routing/image.xml"
+
+_cmf_create_image:
+    resource: "@CmfCreateBundle/Resources/config/routing/image.xml"
+    
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
