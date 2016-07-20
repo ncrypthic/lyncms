@@ -4,17 +4,24 @@
     {% include "CmfCreateBundle::includecssfiles.html.twig" %}
     <link href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
     <link href="{{ asset('vendor/angular-bootstrap/ui-bootstrap-csp.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset("vendor/jquery-ui/themes/vader/jquery-ui.min.css") }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset("vendor/elfinder/dist/css/elfinder.min.css") }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset("vendor/elfinder/dist/css/theme.css") }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.css') }}" type="text/css" rel="stylesheet"/>
 {% endblock stylesheets %}
 
 {% block header_scripts %}
-    <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/tinymce-dist/tinymce.min.js') }}"></script>
     <script src="{{ asset('vendor/angular/angular.min.js') }}"></script>
     <script src="{{ asset('vendor/angular-ui-tinymce/dist/tinymce.min.js') }}"></script>
     <script src="{{ asset('vendor/angular-ui-router/release/angular-ui-router.min.js') }}"></script>
     <script src="{{ asset('vendor/angular-sanitize/angular-sanitize.min.js') }}"></script>
     <script src="{{ asset('vendor/angular-bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
+    <script src="{{ asset("vendor/jquery/jquery.js") }}"></script>
+    <script src="{{ asset("vendor/jquery-ui/jquery-ui.min.js") }}"></script>
+    <script src="{{ asset("vendor/elfinder/dist/js/elfinder.min.js") }}"></script>
+    <script src="{{ asset("vendor/elfinder/dist/js/i18n/elfinder.uk.js") }}"></script>
 {% endblock header_scripts %}
 
 {% block container %}
@@ -34,4 +41,6 @@
     <script src="{{ asset('js/controllers/PageController.js') }}"></script>
     <script src="{{ asset('js/controllers/CategoryController.js') }}"></script>
     <script src="{{ asset('js/controllers/DashboardController.js') }}"></script>
+    <script src="{{ asset('js/controllers/MediaController.js') }}"></script>
+    <script src="{{ asset('js/directives/elfinder.js') }}"></script>
 {% endblock javascripts %}
