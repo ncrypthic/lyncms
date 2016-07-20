@@ -8,6 +8,8 @@
 
 namespace AppBundle\Extension;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 /**
  * Description of WidgetManager
  *
@@ -16,7 +18,8 @@ namespace AppBundle\Extension;
 interface ExtensionInterface
 {
     public function getName();
-    public function getContent();
     public function getCode();
-    public function render($options);
+    public function getTemplate();
+    public function getContent($options);
+    public function getDefaultOptions(OptionsResolver $resolver);
 }
