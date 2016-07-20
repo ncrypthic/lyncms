@@ -4,8 +4,8 @@
         <tr>
             <th>Title</th>
             <th class="text-right">
-                <a href="#/articles/create" class="btn btn-primary">
-                    <i class="glyphicon glyphicon-plus-sign"></i>
+                <a href="#/articles/create" class="btn btn-xs btn-primary">
+                    <i class="glyphicon glyphicon-plus"></i>
                 </a>
             </th>
         </tr>
@@ -14,7 +14,7 @@
         <tr ng-repeat="article in articles">
             <td>{[{ article.title }]}</td>
             <td class="text-right">
-                <a href="#/articles/edit/{[{ article.title }]}" class="btn btn-warning">
+                <a href="#/articles/edit/{[{ article.title }]}" class="btn btn-xs btn-warning">
                     <i class="glyphicon glyphicon-pencil"></i>
                 </a>
             </td>
