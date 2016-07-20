@@ -13,6 +13,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Knp\Menu\FactoryInterface;
 use Symfony\Cmf\Api\Slugifier\SlugifierInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Description of NavigationMenuProvider
@@ -24,19 +25,23 @@ class NavigationMenuProvider implements MenuProviderInterface
     private $om;
     private $menuFactory;
     private $slugifier;
+    private $webDir;
     
     public function __construct(ObjectManager $om, FactoryInterface $factory, 
-            SlugifierInterface $slugifier)
+            SlugifierInterface $slugifier, RequestStack $reqStack)
     {
         $this->om = $om;
         $this->menuFactory = $factory;
         $this->slugifier = $slugifier;
+        if($reqStack->getCurrentRequest()) {
+            $this->webDir = $reqStack->getCurrentRequest()->getBasePath();
+        }
     }
     
     public function get($name, array $options = array())
     {
         if($name === 'navigation') {
-            return $this->getNavigationMenuItems();
+            return $this->getNavigationMenuItems($options);
         }
     }
 
@@ -45,9 +50,10 @@ class NavigationMenuProvider implements MenuProviderInterface
         return $name === 'navigation';
     }
     
-    private function getNavigationMenuItems()
+    private function getNavigationMenuItems($options)
     {
-        $root = $this->menuFactory->createItem('root');
+        $root = $this->menuFactory->createItem('root', $options)
+                ->setAttribute("class", "nav navbar-nav");
         $parent = $this->om->find(null, "/cms/pages");
         $pages = $parent->getChildren();
         $items  = array();
@@ -55,7 +61,7 @@ class NavigationMenuProvider implements MenuProviderInterface
             /* @var $page Page */
             $title = $page->getTitle();
             $root->addChild($this->menuFactory->createItem($title, array(
-                'uri' => $this->slugifier->slugify($title)
+                'uri' => $this->webDir."/".$this->slugifier->slugify($title)
             )));
         }
         
