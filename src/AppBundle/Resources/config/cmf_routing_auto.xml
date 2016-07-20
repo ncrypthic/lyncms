@@ -10,9 +10,15 @@ and open the template in the editor.
             <option name="method">getTitle</option>
         </token-provider>
     </mapping>
-    <mapping class="AppBundle\Document\Article" uri-schema="/articles/{date}/{title}">
-        <token-provider token="date" name="content_datetime">
-            <option name="method">getDate</option>
+    <mapping class="AppBundle\Document\Article" uri-schema="/articles/{year}/{month}/{date}/{title}">
+        <token-provider token="year" name="content_method">
+            <option name="method">getYear</option>
+        </token-provider>
+        <token-provider token="month" name="content_method">
+            <option name="method">getMonth</option>
+        </token-provider>
+        <token-provider token="date" name="content_method">
+            <option name="method">getDay</option>
         </token-provider>
         <token-provider token="title" name="content_method">
             <option name="method">getTitle</option>
