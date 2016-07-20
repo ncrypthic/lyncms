@@ -14,3 +14,4 @@
 app/check.php
 app/SymfonyRequirements.php
 nbproject/
+!/web/uploads/.gitkeep
