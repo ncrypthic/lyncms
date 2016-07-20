@@ -45,4 +45,19 @@ class Article implements RouteReferrersReadInterface
     {
         $this->date = $date;
     }
+    
+    public function getYear()
+    {
+        return $this->date->format('Y');
+    }
+    
+    public function getMonth()
+    {
+        return $this->date->format('m');
+    }
+    
+    public function getDay()
+    {
+        return $this->date->format('d');
+    }
 }
