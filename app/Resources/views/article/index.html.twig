@@ -1,0 +1,6 @@
+{% for article in data %}
+    <h3>
+        <a href="{{path(article)}}">{{ article.title|raw }}</a>
+    </h3>
+    <p>{{ article.content|raw }}</p>
+{% endfor %}

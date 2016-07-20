@@ -1,0 +1,15 @@
+{% extends '::frontend.html.twig' %}
+
+{#
+This is an example template to render content or SimpleCms pages. You
+can configure this template by setting template_by_class in the CmfRoutingBundle
+configuration.
+http://symfony.com/doc/current/cmf/bundles/routing/dynamic.html#configuring-the-controller-for-a-route
+#}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block main %}
+    <h1>{{ article.title|raw }}</h1>
+    <div>{{ article.content|raw }}</div>
+{% endblock %}
