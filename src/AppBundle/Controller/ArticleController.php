@@ -58,4 +58,27 @@ class ArticleController extends FOSRestController
         
         return $article;
     }
+    
+    public function putArticleAction(Request $req, $title)
+    {
+        $payload = json_decode($req->getContent());
+        $manager = $this->get('doctrine_phpcr')->getManager();
+        $repo    = $manager->getRepository('AppBundle:Article');
+        $article = $repo->find("/cms/articles/".$title);
+        $parent  = $repo->find('/cms/articles', 'AppBundle:Article');
+        $article->setContent($payload->content);
+        $article->setTitle($payload->title);
+        $article->setParentDocument($parent);
+        $manager->persist($article);
+        $manager->flush();
+        
+        return $article;
+    }
+    
+    public function viewArticleAction($contentDocument)
+    {
+        return $this->render('::article/detail.html.twig', array(
+            'article' => $contentDocument
+        ));
+    }
 }
